@@ -1,3 +1,4 @@
+import { COMPLETED_STATES } from 'constant';
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 
@@ -27,7 +28,7 @@ const SelectContainer = styled.div`
 
 const Select = forwardRef<Ref, Props>(
   ({ name, label, options, value, onChange, ...props }, ref) => {
-    const neutral = { value: 'all', label: '-' };
+    const neutral = { value: COMPLETED_STATES.ALL, label: '-' };
 
     return (
       <SelectContainer>

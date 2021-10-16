@@ -4,6 +4,12 @@ export enum FETCH_STATES {
   ERROR = 'error',
 }
 
+export enum COMPLETED_STATES {
+  YES = 'yes',
+  NO = 'no',
+  ALL = 'all',
+}
+
 export const COMPLETED_OPTIONS = [
   {
     value: 'yes',

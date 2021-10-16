@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import DataTable from 'components/DataTable';
 import Input from 'components/Input';
 import Select from 'components/Select';
-import { COMPLETED_OPTIONS } from 'constant';
+import { COMPLETED_OPTIONS, COMPLETED_STATES } from 'constant';
 
 const Features = styled.div`
   display: flex;
@@ -14,14 +14,7 @@ const Features = styled.div`
 
 function HomePage() {
   const [searchedText, setSearchedText] = useState('');
-  const [completed, setCompleted] = useState('');
-
-  useEffect(() => {
-    console.log(`searchedText`, searchedText);
-  }, [searchedText]);
-  useEffect(() => {
-    console.log(`completed`, completed);
-  }, [completed]);
+  const [completed, setCompleted] = useState(COMPLETED_STATES.ALL);
 
   return (
     <div>
@@ -46,7 +39,7 @@ function HomePage() {
             onChange={setCompleted}
           />
         </Features>
-        <DataTable />
+        <DataTable filter={searchedText} completed={completed} />
       </main>
     </div>
   );
