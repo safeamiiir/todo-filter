@@ -5,10 +5,10 @@ type Ref = HTMLInputElement;
 
 type Props = {
   name: string;
-  label?: string;
   type: 'text' | 'number';
   value: string | number;
-  placeholder: string;
+  label?: string;
+  placeholder?: string;
   onChange: Function;
 };
 
@@ -41,8 +41,7 @@ const Input = forwardRef<Ref, Props>(
       <InputContainer>
         {label && <label htmlFor={name}>{`${label}:`}</label>}
         <InputElm
-          name={name}
-          id={name}
+          type={type}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           ref={ref}
