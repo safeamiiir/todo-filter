@@ -5,7 +5,6 @@
   "dependencies": {
     "@testing-library/jest-dom": "5.11.8",
     "@testing-library/user-event": "9.0.0",
-    "@types/jest": "^26.0.19",
     "@types/node": "^12.19.12",
     "@types/react": "16.14.2",
     "@types/react-dom": "16.9.10",
@@ -17,7 +16,7 @@
   "scripts": {
     "start": "PORT=8000 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom-fourteen",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,6 +38,7 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^9.5.0"
+    "@testing-library/react": "^12.1.2",
+    "jest-environment-jsdom-fifteen": "^1.0.2"
   }
 }
