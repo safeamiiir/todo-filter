@@ -9,7 +9,7 @@ function HomePage() {
         <h4>Todos</h4>
       </header>
       <main>
-        <DataTable />
+        <DataTable hasSearch hasCategory />
       </main>
     </div>
   );

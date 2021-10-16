@@ -3,3 +3,14 @@ export enum FETCH_STATES {
   COMPLETE = 'complete',
   ERROR = 'error',
 }
+
+export const COMPLETED_OPTIONS = [
+  {
+    value: 'yes',
+    label: 'yes',
+  },
+  {
+    value: 'no',
+    label: 'no',
+  },
+];
