@@ -1,6 +1,7 @@
 import { COMPLETED_STATES } from 'constant';
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
+import { COLORS } from 'theme';
 
 type Ref = HTMLSelectElement;
 
@@ -17,8 +18,8 @@ const SelectContainer = styled.div`
   > select {
     height: 36px;
     min-width: 196px;
-    /* background-color */
-    transition: border 150ms;
+    border: 1px solid ${COLORS.gray};
+    background-color: ${COLORS.white};
     box-sizing: border-box;
   }
   > label {

@@ -1,8 +1,29 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import { ListType } from 'types/requests.interface';
 import { COMPLETED_STATES } from 'constant';
+import { COLORS } from 'theme';
 
+const Table = styled.table`
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+`;
+
+const Thead = styled.thead`
+  padding: 4px 8px;
+  background-color: ${COLORS.gray}; ;
+`;
+
+const Th = styled.th`
+  padding: 4px 8px;
+`;
+
+const TableData = styled.td`
+  padding: 4px 8px;
+  border: 1px solid ${COLORS.gray}; ;
+`;
 interface DataTableProps {
   head: Array<string>;
   data: Array<ListType>;
@@ -20,31 +41,29 @@ function DataTable({ head, data, filter, completed }: DataTableProps) {
     (item.completed ? COMPLETED_STATES.YES : COMPLETED_STATES.NO) === completed;
 
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            {head.map((item, index) => (
-              <th key={`${item}${index}`}>{item}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data
-            ?.filter(handleSearch)
-            .filter(handleCompleted)
-            .map((todo, index) => (
-              <tr key={todo.id}>
-                <td>{index}</td>
-                <td>{todo.title}</td>
-                <td>
-                  {todo.completed ? COMPLETED_STATES.YES : COMPLETED_STATES.NO}
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </div>
+    <Table>
+      <Thead>
+        <tr>
+          {head.map((item, index) => (
+            <Th key={`${item}${index}`}>{item}</Th>
+          ))}
+        </tr>
+      </Thead>
+      <tbody>
+        {data
+          ?.filter(handleSearch)
+          .filter(handleCompleted)
+          .map((todo, index) => (
+            <tr key={todo.id}>
+              <TableData>{index + 1}</TableData>
+              <TableData>{todo.title}</TableData>
+              <TableData>
+                {todo.completed ? COMPLETED_STATES.YES : COMPLETED_STATES.NO}
+              </TableData>
+            </tr>
+          ))}
+      </tbody>
+    </Table>
   );
 }
 

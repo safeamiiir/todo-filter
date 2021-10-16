@@ -18,6 +18,11 @@ const Features = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  > * {
+    margin: 4px 0;
+  }
 `;
 
 function HomePage() {
@@ -30,7 +35,7 @@ function HomePage() {
   return (
     <div>
       <header>
-        <h4>Todos</h4>
+        <h1>Todos</h1>
       </header>
       <main>
         <Features>

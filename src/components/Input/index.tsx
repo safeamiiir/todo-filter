@@ -1,6 +1,8 @@
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 
+import { COLORS } from 'theme';
+
 type Ref = HTMLInputElement;
 
 type Props = {
@@ -29,10 +31,8 @@ const InputElm = styled.input`
   border: none;
   outline: none;
   margin: 0;
-  width: 100%;
-  height: 100%;
   box-sizing: border-box;
-  border: 1px solid gray;
+  border: 1px solid ${COLORS.gray};
 `;
 
 const Input = forwardRef<Ref, Props>(
