@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import requests from 'api/endpoints';
+import { useRequest } from 'hooks/useRequest';
 import DataTable from 'components/DataTable';
 import Input from 'components/Input';
 import Select from 'components/Select';
-import { COMPLETED_OPTIONS, COMPLETED_STATES } from 'constant';
+import {
+  COMPLETED_OPTIONS,
+  COMPLETED_STATES,
+  FETCH_STATES,
+  LOADING,
+  TABLE_HEADS,
+} from 'constant';
 
 const Features = styled.div`
   display: flex;
@@ -13,7 +21,10 @@ const Features = styled.div`
 `;
 
 function HomePage() {
+  const { status, data } = useRequest(requests.getTodos);
+
   const [searchedText, setSearchedText] = useState('');
+
   const [completed, setCompleted] = useState(COMPLETED_STATES.ALL);
 
   return (
@@ -39,7 +50,16 @@ function HomePage() {
             onChange={setCompleted}
           />
         </Features>
-        <DataTable filter={searchedText} completed={completed} />
+        {data && status === FETCH_STATES.COMPLETE ? (
+          <DataTable
+            head={Object.values(TABLE_HEADS)}
+            data={data}
+            filter={searchedText}
+            completed={completed}
+          />
+        ) : (
+          LOADING
+        )}
       </main>
     </div>
   );
