@@ -17,6 +17,7 @@ import {
 } from 'constant';
 import { handleCompleted, handleSearch } from 'helper';
 import { COLORS } from 'theme';
+import { ListType } from 'types/requests.interface';
 
 const Features = styled.div`
   display: flex;
@@ -44,7 +45,11 @@ function HomePage() {
 
   const [completed, setCompleted] = useState(COMPLETED_STATES.ALL);
 
-  const [dataItems, setDataItems] = useState(data);
+  const [dataItems, setDataItems] = useState<Array<ListType> | null>(null);
+
+  const hasData = dataItems?.length && status === FETCH_STATES.COMPLETE;
+
+  const noResult = dataItems && status === FETCH_STATES.COMPLETE;
 
   useEffect(() => {
     if (data) {
@@ -79,10 +84,10 @@ function HomePage() {
             onChange={setCompleted}
           />
         </Features>
-        {!dataItems?.length && status === FETCH_STATES.COMPLETE ? (
-          <NoResult>{NO_RESULT}</NoResult>
-        ) : dataItems && status === FETCH_STATES.COMPLETE ? (
+        {hasData ? (
           <DataTable head={Object.values(TABLE_HEADS)} data={dataItems} />
+        ) : noResult ? (
+          <NoResult>{NO_RESULT}</NoResult>
         ) : (
           LOADING
         )}

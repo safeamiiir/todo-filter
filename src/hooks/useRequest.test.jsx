@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
+import { waitFor } from '@testing-library/dom';
 
 import { useRequest } from 'hooks/useRequest';
 import { FETCH_STATES } from 'constant';
-import { waitFor } from '@testing-library/dom';
 
 function fetchMock(correctness) {
   return new Promise((resolve, reject) =>
