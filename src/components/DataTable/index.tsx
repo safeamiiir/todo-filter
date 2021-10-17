@@ -20,6 +20,10 @@ const Th = styled.th`
   padding: 4px 8px;
 `;
 
+const Tr = styled.tr`
+  border: 1px solid ${COLORS.gray};
+`;
+
 const TableData = styled.td`
   padding: 4px 8px;
   border: 1px solid ${COLORS.gray}; ;
@@ -43,24 +47,24 @@ function DataTable({ head, data, filter, completed }: DataTableProps) {
   return (
     <Table>
       <Thead>
-        <tr>
+        <Tr>
           {head.map((item, index) => (
             <Th key={`${item}${index}`}>{item}</Th>
           ))}
-        </tr>
+        </Tr>
       </Thead>
       <tbody>
         {data
           ?.filter(handleSearch)
           .filter(handleCompleted)
           .map((todo, index) => (
-            <tr key={todo.id}>
+            <Tr key={todo.id}>
               <TableData>{index + 1}</TableData>
               <TableData>{todo.title}</TableData>
               <TableData>
                 {todo.completed ? COMPLETED_STATES.YES : COMPLETED_STATES.NO}
               </TableData>
-            </tr>
+            </Tr>
           ))}
       </tbody>
     </Table>

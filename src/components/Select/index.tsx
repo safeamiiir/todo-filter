@@ -14,13 +14,17 @@ type Props = {
 };
 
 const SelectContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   > select {
     height: 36px;
-    min-width: 196px;
+    min-width: 164px;
     border: 1px solid ${COLORS.gray};
     background-color: ${COLORS.white};
     box-sizing: border-box;
+    width: 100%;
   }
   > label {
     margin-right: 8px;

@@ -21,7 +21,8 @@ const Features = styled.div`
   flex-wrap: wrap;
   margin-bottom: 16px;
   > * {
-    margin: 4px 0;
+    margin: 4px 8px;
+    flex: 1;
   }
 `;
 

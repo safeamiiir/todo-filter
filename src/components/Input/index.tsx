@@ -28,7 +28,7 @@ const InputElm = styled.input`
   padding: 12px;
   height: 36px;
   min-width: 196px;
-  border: none;
+  width: 100%;
   outline: none;
   margin: 0;
   box-sizing: border-box;
