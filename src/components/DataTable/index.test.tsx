@@ -32,13 +32,13 @@ const MockData = [
 
 const head = ['#', 'Title', 'Completed'];
 
-test('render DataTable', async () => {
+test('render DataTable', () => {
   render(<DataTable head={head} data={MockData} />);
   const item_1 = screen.getByText('title_1');
   expect(item_1).toBeInTheDocument();
 });
 
-test('render DataTable with no data', async () => {
+test('render DataTable with no data', () => {
   render(<DataTable head={head} data={[]} />);
 
   const head_1 = screen.getByText(head[0]);

@@ -15,7 +15,7 @@ const options = [
   },
 ];
 
-test('select label is set', async () => {
+test('select label is set', () => {
   render(
     <Select
       label="label-test"
@@ -29,7 +29,7 @@ test('select label is set', async () => {
   expect(label).toBeInTheDocument();
 });
 
-test('select Ref works', async () => {
+test('select Ref works', () => {
   function TestComponent() {
     const [value, setValue] = useState('');
     const selectRef = useRef<HTMLSelectElement | null>(null);
@@ -55,7 +55,7 @@ test('select Ref works', async () => {
   expect(screen.getByTestId('test-ref').innerHTML).toBe('value_1');
 });
 
-test('select has all (-) value', async () => {
+test('select has all (-) value', () => {
   render(
     <Select
       label="label-test"
@@ -68,7 +68,7 @@ test('select has all (-) value', async () => {
   expect(screen.getByText('-')).toBeInTheDocument();
 });
 
-test('select changing value', async () => {
+test('select changing value', () => {
   function TestComponent() {
     const [value, setValue] = useState('');
     return (

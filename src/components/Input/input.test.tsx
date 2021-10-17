@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 
 import Input from 'components/Input';
 
-test('input label is set', async () => {
+test('input label is set', () => {
   render(
     <Input
       label="label-test"
@@ -18,7 +18,7 @@ test('input label is set', async () => {
   expect(label).toBeInTheDocument();
 });
 
-test('input type=number works', async () => {
+test('input type=number works', () => {
   function TestComponent() {
     const [value, setValue] = useState('');
     return (
@@ -42,7 +42,7 @@ test('input type=number works', async () => {
   expect(screen.getByTestId('test')).toHaveValue(123);
 });
 
-test('input Ref works', async () => {
+test('input Ref works', () => {
   function TestComponent() {
     const [value, setValue] = useState('');
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -65,7 +65,7 @@ test('input Ref works', async () => {
   expect(screen.getByTestId('test-ref').innerHTML).toBe('abcd');
 });
 
-test('input changing value', async () => {
+test('input changing value', () => {
   function TestComponent() {
     const [value, setValue] = useState('');
     return <Input name="test" type="text" value={value} onChange={setValue} />;
