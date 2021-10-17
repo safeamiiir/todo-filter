@@ -31,19 +31,9 @@ const TableData = styled.td`
 interface DataTableProps {
   head: Array<string>;
   data: Array<ListType>;
-  filter?: string;
-  completed?: COMPLETED_STATES;
 }
 
-function DataTable({ head, data, filter, completed }: DataTableProps) {
-  const handleSearch = (item: ListType) =>
-    !filter?.trim() || item.title.includes(filter.trim());
-
-  const handleCompleted = (item: ListType) =>
-    !completed ||
-    completed === COMPLETED_STATES.ALL ||
-    (item.completed ? COMPLETED_STATES.YES : COMPLETED_STATES.NO) === completed;
-
+function DataTable({ head, data }: DataTableProps) {
   return (
     <Table>
       <Thead>
@@ -54,18 +44,15 @@ function DataTable({ head, data, filter, completed }: DataTableProps) {
         </Tr>
       </Thead>
       <tbody>
-        {data
-          ?.filter(handleSearch)
-          .filter(handleCompleted)
-          .map((todo, index) => (
-            <Tr key={todo.id}>
-              <TableData>{index + 1}</TableData>
-              <TableData>{todo.title}</TableData>
-              <TableData>
-                {todo.completed ? COMPLETED_STATES.YES : COMPLETED_STATES.NO}
-              </TableData>
-            </Tr>
-          ))}
+        {data.map((todo, index) => (
+          <Tr key={todo.id}>
+            <TableData>{index + 1}</TableData>
+            <TableData>{todo.title}</TableData>
+            <TableData>
+              {todo.completed ? COMPLETED_STATES.YES : COMPLETED_STATES.NO}
+            </TableData>
+          </Tr>
+        ))}
       </tbody>
     </Table>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import requests from 'api/endpoints';
@@ -11,8 +11,12 @@ import {
   COMPLETED_STATES,
   FETCH_STATES,
   LOADING,
+  NO_RESULT,
   TABLE_HEADS,
+  TODOS,
 } from 'constant';
+import { handleCompleted, handleSearch } from 'helper';
+import { COLORS } from 'theme';
 
 const Features = styled.div`
   display: flex;
@@ -26,6 +30,13 @@ const Features = styled.div`
   }
 `;
 
+const NoResult = styled.div`
+  color: ${COLORS.white};
+  background-color: ${COLORS.red};
+  padding: 8px;
+  border-radius: 4px;
+`;
+
 function HomePage() {
   const { status, data } = useRequest(requests.getTodos);
 
@@ -33,10 +44,22 @@ function HomePage() {
 
   const [completed, setCompleted] = useState(COMPLETED_STATES.ALL);
 
+  const [dataItems, setDataItems] = useState(data);
+
+  useEffect(() => {
+    if (data) {
+      setDataItems(
+        data
+          .filter((item) => handleSearch(item, searchedText))
+          .filter((item) => handleCompleted(item, completed))
+      );
+    }
+  }, [data, searchedText, completed]);
+
   return (
     <div>
       <header>
-        <h1>Todos</h1>
+        <h1>{TODOS}</h1>
       </header>
       <main>
         <Features>
@@ -56,13 +79,10 @@ function HomePage() {
             onChange={setCompleted}
           />
         </Features>
-        {data && status === FETCH_STATES.COMPLETE ? (
-          <DataTable
-            head={Object.values(TABLE_HEADS)}
-            data={data}
-            filter={searchedText}
-            completed={completed}
-          />
+        {!dataItems?.length && status === FETCH_STATES.COMPLETE ? (
+          <NoResult>{NO_RESULT}</NoResult>
+        ) : dataItems && status === FETCH_STATES.COMPLETE ? (
+          <DataTable head={Object.values(TABLE_HEADS)} data={dataItems} />
         ) : (
           LOADING
         )}

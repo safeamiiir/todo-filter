@@ -1,14 +1,9 @@
-export enum FETCH_STATES {
-  LOADING = 'loading',
-  COMPLETE = 'complete',
-  ERROR = 'error',
-}
+// CONSTANTS
+export const LOADING = 'L O A D I N G  . . .';
 
-export enum COMPLETED_STATES {
-  YES = 'yes',
-  NO = 'no',
-  ALL = 'all',
-}
+export const TODOS = 'Todos';
+
+export const NO_RESULT = 'No result for the given search parameters!';
 
 export const COMPLETED_OPTIONS = [
   {
@@ -21,11 +16,22 @@ export const COMPLETED_OPTIONS = [
   },
 ];
 
-// Table
+// TABLE
 export const TABLE_HEADS = {
   INDEX: '#',
   TITLE: 'Title',
   COMPLETED: 'Completed',
 };
 
-export const LOADING = 'L O A D I N G  . . .';
+// ENUMS
+export enum FETCH_STATES {
+  LOADING = 'loading',
+  COMPLETE = 'complete',
+  ERROR = 'error',
+}
+
+export enum COMPLETED_STATES {
+  YES = 'yes',
+  NO = 'no',
+  ALL = 'all',
+}
