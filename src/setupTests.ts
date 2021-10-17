@@ -5,4 +5,6 @@
 import '@testing-library/jest-dom';
 
 import { configure } from '@testing-library/dom';
-configure({ asyncUtilTimeout: 5000 });
+
+// because I has to be connected to VPN my net speed decrease I should make it more than usual
+configure({ asyncUtilTimeout: 7000 });
