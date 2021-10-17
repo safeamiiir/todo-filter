@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { ListType } from 'types/requests.interface';
 import { COMPLETED_STATES } from 'constant';
-import { COLORS } from 'theme';
+import { COLORS, SIZES } from 'theme';
 
 const Table = styled.table`
   width: 100%;
@@ -12,21 +12,21 @@ const Table = styled.table`
 `;
 
 const Thead = styled.thead`
-  padding: 4px 8px;
+  padding: ${SIZES[1]} ${SIZES[2]};
   background-color: ${COLORS.gray}; ;
 `;
 
 const Th = styled.th`
-  padding: 4px 8px;
+  padding: ${SIZES[1]} ${SIZES[2]};
 `;
 
 const Tr = styled.tr`
-  border: 1px solid ${COLORS.gray};
+  border: ${SIZES[0]} solid ${COLORS.gray};
 `;
 
 const TableData = styled.td`
-  padding: 4px 8px;
-  border: 1px solid ${COLORS.gray}; ;
+  padding: ${SIZES[1]} ${SIZES[2]};
+  border: ${SIZES[0]} solid ${COLORS.gray}; ;
 `;
 interface DataTableProps {
   head: Array<string>;

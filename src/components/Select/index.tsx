@@ -1,7 +1,7 @@
 import { COMPLETED_STATES } from 'constant';
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
-import { COLORS } from 'theme';
+import { COLORS, SIZES } from 'theme';
 
 type Ref = HTMLSelectElement;
 
@@ -19,15 +19,15 @@ const SelectContainer = styled.div`
   align-items: center;
   position: relative;
   > select {
-    height: 36px;
+    height: ${SIZES[9]};
     min-width: 164px;
-    border: 1px solid ${COLORS.gray};
+    border: ${SIZES[0]}x solid ${COLORS.gray};
     background-color: ${COLORS.white};
     box-sizing: border-box;
     width: 100%;
   }
   > label {
-    margin-right: 8px;
+    margin-right: ${SIZES[2]};
   }
 `;
 

@@ -16,7 +16,7 @@ import {
   TODOS,
 } from 'constant';
 import { handleCompleted, handleSearch } from 'helper';
-import { COLORS } from 'theme';
+import { COLORS, SIZES } from 'theme';
 import { ListType } from 'types/requests.interface';
 
 const Features = styled.div`
@@ -24,9 +24,9 @@ const Features = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-bottom: 16px;
+  margin-bottom: ${SIZES[4]};
   > * {
-    margin: 4px 8px;
+    margin: ${SIZES[1]} ${SIZES[2]};
     flex: 1;
   }
 `;
@@ -34,8 +34,8 @@ const Features = styled.div`
 const NoResult = styled.div`
   color: ${COLORS.white};
   background-color: ${COLORS.red};
-  padding: 8px;
-  border-radius: 4px;
+  padding: ${SIZES[2]};
+  border-radius: ${SIZES[1]};
 `;
 
 function HomePage() {

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 
-import { COLORS } from 'theme';
+import { COLORS, SIZES } from 'theme';
 
 type Ref = HTMLInputElement;
 
@@ -20,19 +20,19 @@ const InputContainer = styled.div`
   align-items: center;
   position: relative;
   > label {
-    margin-right: 8px;
+    margin-right: ${SIZES[2]};
   }
 `;
 
 const InputElm = styled.input`
-  padding: 12px;
-  height: 36px;
+  padding: ${SIZES[3]};
+  height: ${SIZES[9]};
   min-width: 196px;
   width: 100%;
   outline: none;
   margin: 0;
   box-sizing: border-box;
-  border: 1px solid ${COLORS.gray};
+  border: ${SIZES[0]} solid ${COLORS.gray};
 `;
 
 const Input = forwardRef<Ref, Props>(
